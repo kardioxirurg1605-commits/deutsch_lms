@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <title>Deutsch A1 - Barcha Darslar</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; background-color: #f4f6f9; color: #333; }
+        .container { max-width: 900px; margin: 0 auto; }
+        .header { text-align: center; margin-bottom: 40px; }
+        .header h1 { color: #0056b3; margin-bottom: 5px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }
+        .card { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.08); text-decoration: none; color: inherit; transition: 0.3s; display: block; }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 6px 15px rgba(0,0,0,0.15); }
+        .badge { background: #28a745; color: white; padding: 4px 8px; border-radius: 4px; font-size: 12px; }
+        .card h3 { color: #0056b3; margin: 10px 0 5px 0; }
+        .card p { color: #666; font-size: 14px; margin: 0; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>🇩🇪 Deutsch A1 Online Kursi</h1>
+        <p>Netzwerk Neu A1 kitobi boʻyicha barcha darslar va vazifalar</p>
+    </div>
+
+    <div class="grid">
+        {% for chapter in chapters %}
+            <a href="{% url 'chapter_detail' chapter.id %}" class="card">
+                <span class="badge">{{ chapter.level }}</span>
+                <h3>Kapitel {{ chapter.number }}</h3>
+                <p>{{ chapter.title }}</p>
+            </a>
+        {% empty %}
+            <p>Hozircha darslar qoʻshilmadi.</p>
+        {% endfor %}
+    </div>
+</div>
+
+</body>
+</html>
